@@ -8,7 +8,7 @@ function wrongAns () {
 }
 
 triviaButton.addEventListener('click', function () {
-  var startEntry = window.prompt('Would you like to play Spartan Trivia?')
+  var startEntry = window.prompt('Would you like to play Spartan Trivia?').trim().toLowerCase()
   if (startEntry === 'yes') {
     window.alert('Good luck!')
     categoryFunc()
@@ -18,8 +18,8 @@ triviaButton.addEventListener('click', function () {
 })
 
 function sportsTrivia () {
-  var sportsAns1 = window.prompt('Who is the MSU Basketball Coach?')
-  if (sportsAns1 === 'tom izzo') {
+  var sportsAns1 = window.prompt('Who is the MSU Basketball Coach?').trim().toLowerCase()
+  if (sportsAns1 === 'tom izzo' || sportsAns1 === 'izzo') {
     correctAns()
     categoryFunc()
   } else {
@@ -29,7 +29,7 @@ function sportsTrivia () {
 }
 
 function historyTrivia () {
-  var historyAns1 = window.prompt('What year was MSU founded?')
+  var historyAns1 = window.prompt('What year was MSU founded?').trim().toLowerCase()
   if (historyAns1 === '1855') {
     correctAns()
     categoryFunc()
@@ -40,8 +40,8 @@ function historyTrivia () {
 }
 
 function geographyTrivia () {
-  var geographyAns1 = window.prompt('What city is MSU in?')
-  if (geographyAns1 === 'east lansing') {
+  var geographyAns1 = window.prompt('What city is MSU in?').trim().toLowerCase()
+  if (geographyAns1 === 'east lansing' || geographyAns1 === 'el') {
     correctAns()
     categoryFunc()
   } else {
@@ -51,7 +51,7 @@ function geographyTrivia () {
 }
 
 function mysteryTrivia () {
-  var mysteryAns1 = window.prompt('Test your luck, guess a number 1-10')
+  var mysteryAns1 = parseInt(window.prompt('Test your luck, guess a number 1-10')).trim()
   var mysteryNumber = Math.floor((Math.random() * 10) + 1)
   if (mysteryAns1 === mysteryNumber) {
     correctAns()
@@ -64,7 +64,7 @@ function mysteryTrivia () {
 }
 
 function categoryFunc () {
-  var categoryEntry = window.prompt('Select a category: sports, history, geography or mystery')
+  var categoryEntry = window.prompt('Select a category: sports, history, geography or mystery').trim().toLowerCase()
   if (categoryEntry === 'sports') {
     sportsTrivia()
   } else if (categoryEntry === 'history') {
