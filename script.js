@@ -51,7 +51,7 @@ function geographyTrivia () {
 }
 
 function mysteryTrivia () {
-  var mysteryAns1 = parseInt(window.prompt('Test your luck, guess a number 1-10')).trim()
+  var mysteryAns1 = parseInt(window.prompt('Test your luck, guess a number 1-10'))
   var mysteryNumber = Math.floor((Math.random() * 10) + 1)
   if (mysteryAns1 === mysteryNumber) {
     correctAns()
