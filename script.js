@@ -1,18 +1,14 @@
 var triviaButton = document.getElementById('start-trivia')
 
-function correctAns () {
-  window.alert('😊 ' + 'Right Answer! Great Job!' + ' 🤓')
-}
-
-function wrongAns () {
-  window.alert('Wrong :(')
-}
-
-function respondToAnswer (answerWasCorrect) {
+function respondToAnswer (answerWasCorrect, correctAnswerMessage, wrongAnswerMessage) {
   if (answerWasCorrect) {
-    correctAns()
+    if (correctAnswerMessage) {
+      window.alert(correctAnswerMessage)
+    }
   } else {
-    wrongAns()
+    if (wrongAnswerMessage) {
+      window.alert(wrongAnswerMessage)
+    }
   }
   categoryFunc()
 }
@@ -29,28 +25,39 @@ triviaButton.addEventListener('click', function () {
 
 function sportsTrivia () {
   var sportsAns1 = window.prompt('Who is the MSU Basketball Coach?').trim().toLowerCase()
-  respondToAnswer(sportsAns1 === 'tom izzo' || sportsAns1 === 'izzo')
+  respondToAnswer(
+    sportsAns1 === 'tom izzo' || sportsAns1 === 'izzo',
+    'Sparty On!',
+    'Sorry, Tom Izzo is the coach 😕'
+  )
 }
 
 function historyTrivia () {
   var historyAns1 = window.prompt('What year was MSU founded?').trim().toLowerCase()
-  respondToAnswer(historyAns1 === '1855')
+  respondToAnswer(
+    historyAns1 === '1855',
+    'Correct, Go Green!',
+    'Sorry, the correct answer was 1855. 😕'
+  )
 }
 
 function geographyTrivia () {
   var geographyAns1 = window.prompt('What city is MSU in?').trim().toLowerCase()
-  respondToAnswer(geographyAns1 === 'east lansing' || geographyAns1 === 'el')
+  respondToAnswer(
+    geographyAns1 === 'east lansing' || geographyAns1 === 'el',
+    'What a great city!',
+    'You should have known this! It\'s East Lansing! 😕'
+    )
 }
 
 function mysteryTrivia () {
   var mysteryAns1 = parseInt(window.prompt('Test your luck, guess a number 1-10'))
   var mysteryNumber = Math.floor((Math.random() * 10) + 1)
-  if (mysteryAns1 === mysteryNumber) {
-    respondToAnswer('Wow, lucky guess it was ' + mysteryNumber + '!')
-  } else {
-    window.alert('Aww good try! The number was ' + mysteryNumber)
-    categoryFunc()
-  }
+  respondToAnswer(
+    mysteryAns1 === mysteryNumber,
+    'Wow, great guess you were right! It was ' + mysteryNumber + '!',
+    'Aww good try! The number was ' + mysteryNumber
+    )
 }
 
 function categoryFunc () {
