@@ -13,8 +13,15 @@ function respondToAnswer (answerWasCorrect, correctAnswerMessage, wrongAnswerMes
   categoryFunc()
 }
 
+function stripInput (entry) {
+  if (entry !== null) {
+    return entry.trim().toLowerCase()
+  }
+}
+
 triviaButton.addEventListener('click', function () {
-  var startEntry = window.prompt('Would you like to play Spartan Trivia?').trim().toLowerCase()
+  var startEntry = window.prompt('Would you like to play Spartan Trivia?')
+  startEntry = stripInput(startEntry)
   if (startEntry === 'yes') {
     window.alert('Good Luck!')
     categoryFunc()
@@ -24,7 +31,8 @@ triviaButton.addEventListener('click', function () {
 })
 
 function sportsTrivia () {
-  var sportsAns1 = window.prompt('Who is the MSU Basketball Coach?').trim().toLowerCase()
+  var sportsAns1 = window.prompt('Who is the MSU Basketball Coach?')
+  sportsAns1 = stripInput(sportsAns1)
   respondToAnswer(
     sportsAns1 === 'tom izzo' || sportsAns1 === 'izzo',
     'Sparty On!',
@@ -33,7 +41,8 @@ function sportsTrivia () {
 }
 
 function historyTrivia () {
-  var historyAns1 = window.prompt('What year was MSU founded?').trim().toLowerCase()
+  var historyAns1 = window.prompt('What year was MSU founded?')
+  historyAns1 = stripInput(historyAns1)
   respondToAnswer(
     historyAns1 === '1855',
     'Correct, Go Green!',
@@ -42,7 +51,8 @@ function historyTrivia () {
 }
 
 function geographyTrivia () {
-  var geographyAns1 = window.prompt('What city is MSU in?').trim().toLowerCase()
+  var geographyAns1 = window.prompt('What city is MSU in?')
+  geographyAns1 = stripInput(geographyAns1)
   respondToAnswer(
     geographyAns1 === 'east lansing' || geographyAns1 === 'el',
     'What a great city!',
@@ -61,7 +71,8 @@ function mysteryTrivia () {
 }
 
 function categoryFunc () {
-  var categoryEntry = window.prompt('Select a category: sports, history, geography or mystery').trim().toLowerCase()
+  var categoryEntry = window.prompt('Select a category: sports, history, geography or mystery')
+  categoryEntry = stripInput(categoryEntry)
   if (categoryEntry === 'sports') {
     sportsTrivia()
   } else if (categoryEntry === 'history') {
