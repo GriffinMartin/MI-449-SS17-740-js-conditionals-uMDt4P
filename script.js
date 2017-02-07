@@ -1,19 +1,27 @@
 var triviaButton = document.getElementById('start-trivia')
 
+function correctAns () {
+  window.alert('😊 ' + 'Right Answer! Great Job!' + ' 🤓')
+}
+
 function wrongAns () {
   window.alert('Wrong :(')
-  categoryFunc()
 }
 
 function respondToAnswer (answerWasCorrect) {
-  window.alert('😊 ' + answerWasCorrect + ' 🤓')
+  if (answerWasCorrect) {
+    correctAns()
+  } else {
+    wrongAns()
+  }
   categoryFunc()
 }
 
 triviaButton.addEventListener('click', function () {
   var startEntry = window.prompt('Would you like to play Spartan Trivia?').trim().toLowerCase()
   if (startEntry === 'yes') {
-    respondToAnswer('Good Luck!')
+    window.alert('Good Luck!')
+    categoryFunc()
   } else {
     window.alert('=(')
   }
@@ -21,29 +29,17 @@ triviaButton.addEventListener('click', function () {
 
 function sportsTrivia () {
   var sportsAns1 = window.prompt('Who is the MSU Basketball Coach?').trim().toLowerCase()
-  if (sportsAns1 === 'tom izzo' || sportsAns1 === 'izzo') {
-    respondToAnswer('Correct, Go Green!')
-  } else {
-    wrongAns()
-  }
+  respondToAnswer(sportsAns1 === 'tom izzo' || sportsAns1 === 'izzo')
 }
 
 function historyTrivia () {
   var historyAns1 = window.prompt('What year was MSU founded?').trim().toLowerCase()
-  if (historyAns1 === '1855') {
-    respondToAnswer('You guessed it!')
-  } else {
-    wrongAns()
-  }
+  respondToAnswer(historyAns1 === '1855')
 }
 
 function geographyTrivia () {
   var geographyAns1 = window.prompt('What city is MSU in?').trim().toLowerCase()
-  if (geographyAns1 === 'east lansing' || geographyAns1 === 'el') {
-    respondToAnswer('Awesome, correct!')
-  } else {
-    wrongAns()
-  }
+  respondToAnswer(geographyAns1 === 'east lansing' || geographyAns1 === 'el')
 }
 
 function mysteryTrivia () {
